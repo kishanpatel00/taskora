@@ -1,0 +1,275 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Taskora design tokens — compact, work-focused.
+ *
+ * Semantic colors are CSS variables, so one class on <html> switches the whole
+ * app between light and dark without per-component overrides. Neutrals are
+ * deliberately low-chroma; color is reserved for actions, status and data.
+ */
+:root {
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --surface-2: #f6f7f9;
+  --surface-3: #eceef2;
+  --line: #e3e6eb;
+  --line-strong: #cdd2da;
+  --fg: #111827;
+  --fg-2: #4b5563;
+  /* Muted text stays >= 4.5:1 on white for small metadata. */
+  --fg-3: #687385;
+  --brand: #4f46e5;
+  --brand-hover: #4338ca;
+  --brand-soft: #eef0fe;
+  --brand-ink: #4338ca;
+  --accent: #7c3aed;
+  --accent-soft: #f3effe;
+  --ring: rgb(79 70 229 / 0.5);
+  --overlay: rgb(17 24 39 / 0.4);
+  --shadow-color: 220 25% 10%;
+  /* Chart series (validated for CVD separation + contrast on each surface). */
+  --chart-1: #4f46e5;
+  --chart-2: #0284c7;
+  /* Single-hue indigo ramp for ordinal / sequential data (low -> high). */
+  --seq-0: #eceef2;
+  --seq-1: #c7d2fe;
+  --seq-2: #a5b4fc;
+  --seq-3: #6366f1;
+  --seq-4: #4338ca;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0e1014;
+  --surface: #15171c;
+  --surface-2: #1b1e24;
+  --surface-3: #242830;
+  --line: #262a32;
+  --line-strong: #353a44;
+  --fg: #e8eaee;
+  --fg-2: #a3aab6;
+  --fg-3: #7f8896;
+  --brand: #6366f1;
+  --brand-hover: #818cf8;
+  --brand-soft: rgb(99 102 241 / 0.16);
+  --brand-ink: #a5b4fc;
+  --accent: #a78bfa;
+  --accent-soft: rgb(139 92 246 / 0.16);
+  --ring: rgb(129 140 248 / 0.6);
+  --overlay: rgb(0 0 0 / 0.6);
+  --shadow-color: 0 0% 0%;
+  --chart-1: #6366f1;
+  --chart-2: #0891b2;
+  --seq-0: #242830;
+  --seq-1: #312e81;
+  --seq-2: #4338ca;
+  --seq-3: #6366f1;
+  --seq-4: #a5b4fc;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--fg);
+  --color-fg-2: var(--fg-2);
+  --color-fg-3: var(--fg-3);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-ink: var(--brand-ink);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-ring: var(--ring);
+  --color-overlay: var(--overlay);
+}
+
+@theme {
+  --font-sans: 'Inter', 'Inter var', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /*
+   * Compact type scale. Overriding Tailwind's steps keeps every component on
+   * one scale: xs 11.5 (metadata) · sm 13 (body, tables) · base 14 · lg 15
+   * (section) · xl 17 · 2xl 22 (page titles).
+   */
+  --text-xs: 0.71875rem;
+  --text-xs--line-height: 1rem;
+  --text-sm: 0.8125rem;
+  --text-sm--line-height: 1.25rem;
+  --text-base: 0.875rem;
+  --text-base--line-height: 1.375rem;
+  --text-lg: 0.9375rem;
+  --text-lg--line-height: 1.375rem;
+  --text-xl: 1.0625rem;
+  --text-xl--line-height: 1.5rem;
+  --text-2xl: 1.375rem;
+  --text-2xl--line-height: 1.75rem;
+
+  /* Corner radii by role: controls are crisp, floating menus a little softer, panels at most 8px. */
+  --radius-control: 4px;
+  --radius-menu: 6px;
+  --radius-panel: 8px;
+
+  /* Flat surfaces separated by borders; shadows only for things that float. */
+  --shadow-xs: 0 1px 1px hsl(var(--shadow-color) / 0.04);
+  --shadow-card: 0 1px 2px hsl(var(--shadow-color) / 0.04);
+  --shadow-pop: 0 6px 18px -4px hsl(var(--shadow-color) / 0.16), 0 1px 3px hsl(var(--shadow-color) / 0.08);
+  --shadow-modal: 0 16px 40px -8px hsl(var(--shadow-color) / 0.28), 0 2px 6px hsl(var(--shadow-color) / 0.08);
+
+  --animate-fade-in: fade-in 120ms ease-out both;
+  --animate-scale-in: scale-in 140ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-slide-in-left: slide-in-left 200ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-shimmer: shimmer 1.4s ease-in-out infinite;
+  /* Landing page entrance: short distance, eased, honours per-element `animation-delay`. */
+  --animate-rise: rise 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-grow: grow 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-highlight: highlight 1600ms ease-out 1100ms 1 both;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes grow {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+  @keyframes highlight {
+    0% {
+      background-color: rgb(99 102 241 / 0.16);
+    }
+    100% {
+      background-color: rgb(99 102 241 / 0);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px) scale(0.99);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes slide-in-left {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: none;
+    }
+  }
+  @keyframes shimmer {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.45;
+    }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-bg font-sans text-sm text-fg antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  /* One stroke weight for every Lucide icon in the app. */
+  svg.lucide {
+    stroke-width: 1.8;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--brand-soft);
+    color: var(--brand-ink);
+  }
+
+  input[type='date']::-webkit-calendar-picker-indicator {
+    opacity: 0.55;
+    cursor: pointer;
+  }
+  .dark input[type='date']::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-strong) transparent;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/*
+ * Scroll reveal (landing page). Content is only hidden once JavaScript has
+ * marked the element as observable, so it is never lost if the observer fails.
+ */
+[data-reveal='pending'] {
+  opacity: 0;
+  transform: translateY(14px);
+}
+[data-reveal='shown'] {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
