@@ -2,6 +2,8 @@
 
 **Plan smarter. Focus deeper. Achieve more.**
 
+**Live app: [mytaskora.vercel.app](https://mytaskora.vercel.app)**  ·  [Open the dashboard](https://mytaskora.vercel.app/dashboard)
+
 A modern productivity and project management platform to organize tasks, manage projects, plan your day, stay focused, and track productivity with an intuitive, responsive interface and multilingual support.
 
 Taskora is a smart productivity and project-management app built as a frontend-only React application. It combines project management with a daily planner, Kanban boards, a focus timer, template-based goal planning and productivity analytics, in a polished SaaS-style interface with light and dark themes.
@@ -352,13 +354,15 @@ npm run build      # output: dist/
 npm run preview    # optional local check
 ```
 
+The live app is hosted on Vercel at **<https://mytaskora.vercel.app>** (production deployment, Vite preset, build `npm run build`, output `dist`).
+
 Deploy `dist/` to any static host. Because routing is client-side, the host must serve `index.html` for unknown paths so that a refresh on `/dashboard` or `/projects/:id` works. The fallbacks for Netlify and Vercel are already included:
 
 - **Netlify:** set the build command to `npm run build` and the publish directory to `dist`. `public/_redirects` (`/*  /index.html  200`) is copied into the build.
 - **Vercel:** use the Vite preset. `vercel.json` rewrites every path to `/index.html`.
 - **GitHub Pages:** build with `npx vite build --base=/<repo-name>/` and use a `404.html` copy of `index.html` for deep links.
 
-No environment variables or secrets are required.
+No secrets are required. Optionally set `VITE_APP_URL` (for example `https://mytaskora.vercel.app`) in the host's environment settings; without it, canonical and share links use the address the site is opened on.
 
 ---
 
