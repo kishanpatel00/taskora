@@ -57,12 +57,14 @@ describe.each(Object.entries(LOCALES))('%s.json', (code, dictionary) => {
 describe('translation keys used in code', () => {
   const categories = new Set(EN_KEYS.map((key) => key.split('_')[0]))
   const exists = (key: string) => Object.hasOwn(en, key) || Object.hasOwn(en, `${key}_one`)
+  // Snake-case strings that are not translation keys (third-party event names).
+  const NOT_KEYS = new Set(['data_failed'])
 
   it('all exist in en.json', () => {
     const missing = new Set<string>()
     for (const [file, source] of Object.entries(SOURCES)) {
       for (const [, key] of source.matchAll(/['"`]([a-z][a-z0-9]*(?:_[a-z0-9]+)+)['"`]/g)) {
-        if (key && categories.has(key.split('_')[0] ?? '') && !exists(key)) missing.add(`${key} (${file})`)
+        if (key && !NOT_KEYS.has(key) && categories.has(key.split('_')[0] ?? '') && !exists(key)) missing.add(`${key} (${file})`)
       }
     }
     expect([...missing]).toEqual([])

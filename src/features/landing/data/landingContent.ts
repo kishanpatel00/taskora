@@ -65,9 +65,9 @@ export const FAQS = [
 /* ---------- Sample data for the static product previews (mirrors the demo workspace) ---------- */
 
 export const PREVIEW_PROJECTS: Array<{ id: string; nameKey: TranslationKey; color: ProjectColor; percent: number }> = [
-  { id: 'portfolio', nameKey: 'landing_preview_project_portfolio', color: 'indigo', percent: 40 },
-  { id: 'launch', nameKey: 'landing_preview_project_launch', color: 'violet', percent: 50 },
-  { id: 'learning', nameKey: 'landing_preview_project_learning', color: 'sky', percent: 56 },
+  { id: 'portfolio', nameKey: 'landing_preview_project_portfolio', color: 'sky', percent: 40 },
+  { id: 'launch', nameKey: 'landing_preview_project_launch', color: 'teal', percent: 50 },
+  { id: 'learning', nameKey: 'landing_preview_project_learning', color: 'emerald', percent: 56 },
 ]
 
 export const PREVIEW_TASKS: Array<{ id: string; titleKey: TranslationKey; priority: TaskPriority; status: TaskStatus }> = [

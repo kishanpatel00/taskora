@@ -19,7 +19,7 @@ export function useThemeSync(): void {
     const apply = () => {
       const dark = resolveTheme(preference, media.matches) === 'dark'
       document.documentElement.classList.toggle('dark', dark)
-      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#0b0e17' : '#4f46e5')
+      document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#0b0e17' : '#1e4cba')
     }
     apply()
     if (preference !== 'system') return

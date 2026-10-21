@@ -4,6 +4,7 @@ import { toast } from 'sonner'
 import { App } from '@/app/App'
 import i18n from '@/i18n'
 import { bootstrap } from '@/app/bootstrap'
+import { runSplash } from '@/app/splash'
 import { startPersistence } from '@/store/persistence'
 import '@/styles/index.css'
 
@@ -19,6 +20,9 @@ startPersistence(store, {
 
 const container = document.getElementById('root')
 if (!container) throw new Error('Root element #root not found')
+
+// Logo animation on every full page load; the app renders underneath meanwhile.
+runSplash(container)
 
 createRoot(container).render(
   <StrictMode>

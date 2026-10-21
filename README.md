@@ -108,11 +108,25 @@ npm install
 npm run dev
 ```
 
-Open the URL Vite prints (by default <http://localhost:5173>). If that port is busy, choose another one:
+Open <http://localhost:5199> (the URL Vite prints).
+
+### Environment (`.env`)
+
+Server and URL settings come from a `.env` file in the project root. It is ignored by Git, so each machine keeps its own. Without it, the defaults below apply:
 
 ```bash
-npm run dev -- --port 5199
+# Public URL of the app, used for canonical and social-share links
+VITE_APP_URL=http://localhost:5199
+# Port for `npm run dev` and `npm run preview`
+APP_PORT=5199
+# Host to bind (0.0.0.0 to reach the dev server from other devices)
+APP_HOST=localhost
 ```
+
+- If `APP_PORT` is busy, the server stops with an error instead of silently switching ports. Free the port or change `APP_PORT`.
+- An invalid `APP_PORT` (not a whole number from 1 to 65535) is rejected with a clear message.
+- Only `VITE_*` values are included in the browser bundle, and they are public, so never put secrets in `.env`.
+- On a host such as Netlify or Vercel, set `VITE_APP_URL` to your production URL in the host's environment settings.
 
 On first launch, Taskora creates the demo workspace and saves it to `localStorage`. Your changes persist across reloads. To start over, use **Settings → Your data → Reset demo data**.
 

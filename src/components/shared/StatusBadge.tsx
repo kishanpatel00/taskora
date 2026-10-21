@@ -22,8 +22,8 @@ export function StatusBadge({ status, className }: { status: TaskStatus; classNa
 }
 
 const PROJECT_DOT_COLORS: Record<ProjectStatus, string> = {
-  planning: 'bg-violet-500',
-  active: 'bg-indigo-500',
+  planning: 'bg-sky-500',
+  active: 'bg-brand',
   on_hold: 'bg-amber-500',
   completed: 'bg-emerald-500',
 }

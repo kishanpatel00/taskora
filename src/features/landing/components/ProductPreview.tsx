@@ -48,7 +48,7 @@ export function ProductPreview() {
             <span className="size-2 rounded-full bg-emerald-400" />
           </span>
           <span className="mx-auto flex items-center gap-1.5 text-[11px] font-medium text-fg-3">
-            <LogoMark className="size-3.5 rounded-[3px]" />
+            <LogoMark className="size-3.5" />
             {t('landing_preview_window_title')}
           </span>
         </div>

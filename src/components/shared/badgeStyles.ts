@@ -10,6 +10,6 @@ export const PRIORITY_FLAG_COLORS: Record<TaskPriority, string> = {
 export const STATUS_DOT_COLORS: Record<TaskStatus, string> = {
   backlog: 'bg-slate-400',
   todo: 'bg-sky-500',
-  in_progress: 'bg-indigo-500',
+  in_progress: 'bg-brand',
   done: 'bg-emerald-500',
 }

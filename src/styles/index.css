@@ -20,24 +20,26 @@
   --fg-2: #4b5563;
   /* Muted text stays >= 4.5:1 on white for small metadata. */
   --fg-3: #687385;
-  --brand: #4f46e5;
-  --brand-hover: #4338ca;
-  --brand-soft: #eef0fe;
-  --brand-ink: #4338ca;
-  --accent: #7c3aed;
-  --accent-soft: #f3effe;
-  --ring: rgb(79 70 229 / 0.5);
+  /* Brand colors come from the Taskora logo: royal blue with a blue-to-teal accent. */
+  --brand: #1e4cba;
+  --brand-hover: #183e9c;
+  --brand-soft: #eaf0fb;
+  --brand-ink: #1a43a8;
+  --accent: #0f766e;
+  --accent-soft: #e6f6f3;
+  --logo: #1e4cba;
+  --ring: rgb(30 76 186 / 0.45);
   --overlay: rgb(17 24 39 / 0.4);
   --shadow-color: 220 25% 10%;
   /* Chart series (validated for CVD separation + contrast on each surface). */
-  --chart-1: #4f46e5;
-  --chart-2: #0284c7;
-  /* Single-hue indigo ramp for ordinal / sequential data (low -> high). */
+  --chart-1: #1e4cba;
+  --chart-2: #0d9488;
+  /* Single-hue brand-blue ramp for ordinal / sequential data (low -> high). */
   --seq-0: #eceef2;
-  --seq-1: #c7d2fe;
-  --seq-2: #a5b4fc;
-  --seq-3: #6366f1;
-  --seq-4: #4338ca;
+  --seq-1: #c9d6f5;
+  --seq-2: #93aeea;
+  --seq-3: #4a73d6;
+  --seq-4: #1e4cba;
   color-scheme: light;
 }
 
@@ -51,22 +53,23 @@
   --fg: #e8eaee;
   --fg-2: #a3aab6;
   --fg-3: #7f8896;
-  --brand: #6366f1;
-  --brand-hover: #818cf8;
-  --brand-soft: rgb(99 102 241 / 0.16);
-  --brand-ink: #a5b4fc;
-  --accent: #a78bfa;
-  --accent-soft: rgb(139 92 246 / 0.16);
-  --ring: rgb(129 140 248 / 0.6);
+  --brand: #3463d8;
+  --brand-hover: #4f7fe6;
+  --brand-soft: rgb(52 99 216 / 0.18);
+  --brand-ink: #8fb0f5;
+  --accent: #2dd4bf;
+  --accent-soft: rgb(45 212 191 / 0.14);
+  --logo: #8fb0f5;
+  --ring: rgb(91 141 239 / 0.6);
   --overlay: rgb(0 0 0 / 0.6);
   --shadow-color: 0 0% 0%;
-  --chart-1: #6366f1;
-  --chart-2: #0891b2;
+  --chart-1: #5b8def;
+  --chart-2: #0fa898;
   --seq-0: #242830;
-  --seq-1: #312e81;
-  --seq-2: #4338ca;
-  --seq-3: #6366f1;
-  --seq-4: #a5b4fc;
+  --seq-1: #1c2f66;
+  --seq-2: #24479e;
+  --seq-3: #3463d8;
+  --seq-4: #8fb0f5;
   color-scheme: dark;
 }
 
@@ -86,6 +89,7 @@
   --color-brand-ink: var(--brand-ink);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
+  --color-logo: var(--logo);
   --color-ring: var(--ring);
   --color-overlay: var(--overlay);
 }
@@ -153,10 +157,10 @@
   }
   @keyframes highlight {
     0% {
-      background-color: rgb(99 102 241 / 0.16);
+      background-color: rgb(30 76 186 / 0.14);
     }
     100% {
-      background-color: rgb(99 102 241 / 0);
+      background-color: rgb(30 76 186 / 0);
     }
   }
   @keyframes fade-in {

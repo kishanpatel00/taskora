@@ -5,7 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Taskora — Plan smarter. Focus deeper. Achieve more." />
-    <meta name="theme-color" content="#4f46e5" />
+    <meta name="theme-color" content="#1e4cba" />
     <title>Taskora</title>
     <script>
       // Apply the saved theme before first paint to avoid a light/dark flash.
@@ -18,8 +18,34 @@
         } catch (e) {}
       })();
     </script>
+    <style>
+      /* Boot splash: painted with the HTML so a hard refresh never shows a blank page. src/app/splash.ts plays the logo animation in it. */
+      #splash {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: grid;
+        place-items: center;
+        background: #ffffff;
+        transition: opacity 320ms ease, visibility 320ms;
+      }
+      .dark #splash {
+        background: #0e1014;
+      }
+      #splash.is-done {
+        opacity: 0;
+        visibility: hidden;
+      }
+      #splash-animation {
+        width: min(440px, 82vw);
+        aspect-ratio: 8 / 3;
+      }
+    </style>
   </head>
   <body>
+    <div id="splash" role="img" aria-label="Taskora">
+      <div id="splash-animation"></div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

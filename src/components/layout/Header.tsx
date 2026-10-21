@@ -110,7 +110,7 @@ function ProfileMenu() {
           type="button"
           {...props}
           aria-label={t('header_account_menu')}
-          className="ml-0.5 flex size-7 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-violet-500 text-[11px] font-semibold text-white transition hover:opacity-90"
+          className="ml-0.5 flex size-7 items-center justify-center rounded-full bg-gradient-to-br from-[#2045b7] to-[#1fae9a] text-[11px] font-semibold text-white transition hover:opacity-90"
         >
           {initials}
         </button>

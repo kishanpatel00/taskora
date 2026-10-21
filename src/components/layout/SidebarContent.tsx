@@ -54,7 +54,7 @@ function NavEntry({ item, collapsed, badge, indicator, onNavigate }: NavEntryPro
         )}
         {indicator && (
           <span
-            className={cn('size-1.5 rounded-full bg-violet-500', collapsed && 'absolute top-1 right-1')}
+            className={cn('size-1.5 rounded-full bg-accent', collapsed && 'absolute top-1 right-1')}
             role="status"
             aria-label={t('navigation_focus_running')}
           />
